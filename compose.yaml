@@ -1,0 +1,14 @@
+services:
+  landahoy-frontend:
+    container_name: landahoy-frontend
+    build: ./client/Dockerfile
+  landahoy-backend:
+    container_name: landahoy-backend
+    build: ./server/Dockerfile
+  landahoy-db:
+    container_name: landahoy-db
+    image: postgres
+    environment:
+      - POSTGRES_AUTH_METHOD=trust
+    ports:
+      - 5433:5432

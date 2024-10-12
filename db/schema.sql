@@ -1,0 +1,1 @@
+CREATE TABLE IF NOT EXISTS landahoy (id uuid primary key default gen_random_uuid(), tvdb_id int, complete boolean, last_mod timestamp, ignore boolean, justification text);
