@@ -4,7 +4,7 @@ function Series() {
   const [series, setSeries] = useState<SeriesAPIResponse[]>([]);
 
   useEffect(() => {
-    fetch("http://localhost:5050").then(res => res.json()).then(data => {console.log(data); setSeries(data);})
+    fetch("http://localhost:5050/api").then(res => res.json()).then(data => {console.log(data); setSeries(data);})
   }, [])
 
   return (
@@ -12,9 +12,9 @@ function Series() {
       <p>Content here</p>
       <div>{series.map((s) => {
         return (
-          <div key={s.id}>
-            <p>Series: {s.tvdb_id}</p>
-            <p>Complete: {s.complete.toString()}</p>
+          <div key={s.ID}>
+            <p>Series: {s.TVDB_ID}</p>
+            <p>Complete: {s.COMPLETE === 0 ? 'false' : 'true'}</p>
           </div>
         )
       })}</div>
@@ -23,9 +23,9 @@ function Series() {
 }
 
 interface SeriesAPIResponse {
-  id: string;
-  tvdb_id: number;
-  complete: boolean;
+  ID: string;
+  TVDB_ID: number;
+  COMPLETE: number;
 }
 
 export default Series
